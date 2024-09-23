@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+input{
+    margin-left: 40%;
+}
+
+#categories{
+    width: 800px;
+    margin-left: 50px;
+    height: 40px;
+    position: relative;
+    display: block;
+    float: left;
+   
+}
+#menu{
+    top:50px;
+    width: 800px;
+    position: relative;
+    margin-left: 50px;
+    height: 70px;
+    display: block;
+    
+}
+.info{
+    outline: auto;
+    padding: 20px;
+    height: 60px;
+    width: 60px;
+    float: left;
+    text-align: center;
+}
+.info2{
+    outline: auto;
+    padding: 20px;
+    height: 100%;
+    width: 60px;
+    float: left;
+    text-align: center;
+    
+    
+}   
+
+#guess{
+    padding: 10px
+}
