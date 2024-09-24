@@ -15,6 +15,9 @@ const movie = document.getElementById("movie")
 const height = document.getElementById("height")
 const hair = document.getElementById("hair")
 
+const ListaDanych = document.getElementById("characters")
+const p = document.getElementById("qqq")
+
 const guess = document.getElementById("guess")
 guess.addEventListener("input", GuessCharacter)
 let Randomizer = Math.floor(Math.random() * 84)
@@ -22,6 +25,7 @@ SWAPI = "https://swapi.dev/api/people/" + Randomizer
 
 let ToGuess
 
+datalisting();
 
 const infos = document.querySelectorAll(".info");
         
@@ -84,4 +88,25 @@ function GuessCharacter(){
         for(let i = 0; i<infos.length; i++){
             infos[i].style.backgroundColor = "lightgreen";
     }} 
+}
+
+
+function datalisting(){
+let SWAPI2
+
+    for(let i=1;i<84;i++){
+        SWAPI2 = "https://swapi.dev/api/people/" + i
+        fetch(SWAPI2)
+        .then(response =>{
+            return response.json();
+        })
+        .then(data => {
+            let option = document.createElement('option')
+            option.value = data.name
+            ListaDanych.appendChild(option)
+            // p.appendChild(option)
+
+        })
+    }
+
 }
