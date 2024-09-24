@@ -25,10 +25,10 @@ SWAPI = "https://swapi.dev/api/people/" + Randomizer
 let SWAPIguesser = "https://swapi.dev/api/people/"
 let outer;
 
-let ToGuess
+let ToGuess,ToGuessLink = SWAPI
 const infos = document.querySelectorAll(".info");
 datalisting();
-choices();
+choices(SWAPI);
 
 
 
@@ -41,9 +41,9 @@ choices();
 
 
 
-function choices(){
+function choices(Link){
 
-        fetch(SWAPI)
+        fetch(Link)
         .then(response => {
             if (!response.ok) {
                 throw new Error("fail")
@@ -99,21 +99,13 @@ function GuessCharacter(){
     console.log(guess.value)
     let rep = ToGuess
     if(guess.value == ToGuess || guess.value == rep.split(" ")[0]){
-
         
-
-
-
-
-        /*
         for(let i = 0; i<infos.length; i++){
             infos[i].style.backgroundColor = "lightgreen";
-    }*/
+    }
     } else {
-    //     for(let i = 0; i<infos.length; i++){
-    //         infos[i].style.backgroundColor = "lightcoral";
-    // }
         
+        fetch(ToGuessLink)
     }
 }
 
