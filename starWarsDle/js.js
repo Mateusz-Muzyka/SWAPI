@@ -1,10 +1,10 @@
 
 // Jest aktualnie 83 postacie w SWAPI
 
-//robić kupe mocno
+
 
 let SWAPI = "https://swapi.dev/api/people"
-console.log(SWAPI)
+
 
 const names = document.getElementById("name")
 const gender = document.getElementById("gender")
@@ -23,14 +23,20 @@ guess2.addEventListener("click", GuessCharacter)
 let Randomizer = Math.floor(Math.random() * 84)
 SWAPI = "https://swapi.dev/api/people/" + Randomizer
 let SWAPIguesser = "https://swapi.dev/api/people/"
-let outer;
-
-let ToGuess,ToGuessLink = SWAPI
+let a
+let ToGuess
+let ToGuessLink = SWAPI
 const infos = document.querySelectorAll(".info");
+fetch(SWAPI)
+.then(response =>{
+    return response.json();
+})
+.then(data => {
+    ToGuess = data.name;
+})
+
+
 datalisting();
-choices(SWAPI);
-
-
 
 
 
@@ -50,12 +56,10 @@ function choices(Link){
             return response.json();
         })
         .then(data => {
-            console.log(data)
-            console.log(data.name)
-            console.log(data.gender)
+
         // Imie i ewentualnie nazwisko
             names.innerHTML = data.name
-            ToGuess = data.name;
+            
         // Płeć
             gender.innerHTML = data.gender
         // kolor skóry
@@ -81,7 +85,7 @@ function choices(Link){
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data)
+                    
                     movie.innerHTML = data.title
                 })
             } else {
@@ -96,6 +100,8 @@ function choices(Link){
   
 function GuessCharacter(){
     console.log(guess.value)
+    console.log(ToGuess)
+    
     let rep = ToGuess
     if(guess.value == ToGuess || guess.value == rep.split(" ")[0]){
         
@@ -104,7 +110,7 @@ function GuessCharacter(){
     }
     } else {
         
-        fetch(ToGuessLink)
+        guess.value
     }
 }
 
