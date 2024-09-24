@@ -9,4 +9,4 @@ W grze użytkownik będzie zmierzał się z odgadywaniem postaci, będzie otrzym
 
 
 
-# Mateusz i oskar Laga
+# Mateusz , Oskar Laga i Oskar Rutkowski
