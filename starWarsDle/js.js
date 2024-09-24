@@ -16,19 +16,33 @@ const height = document.getElementById("height")
 const hair = document.getElementById("hair")
 
 const ListaDanych = document.getElementById("characters")
-const p = document.getElementById("qqq")
 
 const guess = document.getElementById("guess")
-guess.addEventListener("input", GuessCharacter)
+const guess2 = document.getElementById("guess2")
+guess2.addEventListener("click", GuessCharacter)
 let Randomizer = Math.floor(Math.random() * 84)
 SWAPI = "https://swapi.dev/api/people/" + Randomizer
+let SWAPIguesser = "https://swapi.dev/api/people/"
+let outer;
 
 let ToGuess
-
-datalisting();
-
 const infos = document.querySelectorAll(".info");
-        
+datalisting();
+choices();
+
+
+
+
+
+
+
+
+
+
+
+
+function choices(){
+
         fetch(SWAPI)
         .then(response => {
             if (!response.ok) {
@@ -79,22 +93,36 @@ const infos = document.querySelectorAll(".info");
         // kolor włosów postaci
             hair.innerHTML = data.hair_color
         })
-    
+}
   
 function GuessCharacter(){
     console.log(guess.value)
     let rep = ToGuess
     if(guess.value == ToGuess || guess.value == rep.split(" ")[0]){
+
+        
+
+
+
+
+        /*
         for(let i = 0; i<infos.length; i++){
             infos[i].style.backgroundColor = "lightgreen";
-    }} 
+    }*/
+    } else {
+    //     for(let i = 0; i<infos.length; i++){
+    //         infos[i].style.backgroundColor = "lightcoral";
+    // }
+        
+    }
 }
 
-
+// autocomplete
 function datalisting(){
 let SWAPI2
 
     for(let i=1;i<84;i++){
+        if(i != 17){
         SWAPI2 = "https://swapi.dev/api/people/" + i
         fetch(SWAPI2)
         .then(response =>{
@@ -104,9 +132,9 @@ let SWAPI2
             let option = document.createElement('option')
             option.value = data.name
             ListaDanych.appendChild(option)
-            // p.appendChild(option)
+            
 
         })
     }
-
+    }
 }
