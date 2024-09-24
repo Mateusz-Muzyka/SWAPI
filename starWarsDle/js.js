@@ -1,7 +1,7 @@
 
 // Jest aktualnie 83 postacie w SWAPI
 
-
+//robić kupe mocno
 
 let SWAPI = "https://swapi.dev/api/people"
 console.log(SWAPI)
@@ -29,7 +29,6 @@ let ToGuess,ToGuessLink = SWAPI
 const infos = document.querySelectorAll(".info");
 datalisting();
 choices(SWAPI);
-
 
 
 
