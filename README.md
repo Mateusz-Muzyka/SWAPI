@@ -5,7 +5,7 @@ W grze użytkownik będzie zmierzał się z odgadywaniem postaci, będzie otrzym
 
 <img src="smash.png" />
 
-
+<img src="mommy.png" />
 
 
 
