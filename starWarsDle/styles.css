@@ -48,3 +48,9 @@ input{
 #guess{
     padding: 10px
 }
+
+#kont-inp{
+    display: block;
+    width: 100px;
+    margin-left: 25%;
+}
