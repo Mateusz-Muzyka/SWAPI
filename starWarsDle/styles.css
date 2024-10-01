@@ -55,3 +55,9 @@ input{
     margin-left: 25%;
 }
 
+.main{
+
+background-image: url('walpapa.jpeg'); 
+backgrounds-size: cover;
+}
+
