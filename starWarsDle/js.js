@@ -106,7 +106,7 @@ function choices(Link){
   
 function GuessCharacter(){
     
-    console.log(ToGuess)
+    console.log("System: "+ToGuess)
     
     let rep = ToGuess
     if(guess.value == ToGuess || guess.value == rep.split(" ")[0]){
@@ -114,6 +114,7 @@ function GuessCharacter(){
         for(let i = 0; i<infos.length; i++){
             infos[i].style.backgroundColor = "lightgreen";
     }
+        linker(guess.value)
     } else {
         linker(guess.value)
         for(let i = 0; i<infos.length; i++){
@@ -147,7 +148,7 @@ let SWAPI2
 
 
 function linker(Lookup){
-    console.log("Lookup= " + Lookup)
+    
     for(let i=1; i<84;i++){
         if(i != 17){
             let SW = "https://swapi.dev/api/people/" + i
@@ -158,12 +159,12 @@ function linker(Lookup){
             .then(data =>{
                 
                 if(Lookup == data.name){
-                    console.log("funckaj="+Lookup)
+                    
                     
                     NumerID = i
-                    console.log(NumerID)
+                  
                     NumerID_z_linkiem = "https://swapi.dev/api/people/" + NumerID
-                    console.log(NumerID_z_linkiem)
+                   
                     choices(NumerID_z_linkiem)
                     compare(NumerID_z_linkiem)
                 }else{
@@ -204,7 +205,7 @@ function linker(Lookup){
     // }
 
 function compare(given){
-    console.log(given)
+   
 
 
 fetch(SWAPI)
@@ -212,9 +213,9 @@ fetch(SWAPI)
     return response.json();
 })
 .then(data =>{
-    
+    console.log("Objekt base: ") 
+    console.log(data)
     name10 = data.name
-    console.log("BASE "+data.name)
     gender10 = data.gender
     skin_color10 = data.skin_color
     mass10 = data.mass
@@ -227,7 +228,7 @@ fetch(SWAPI)
             return response.json();
         })
         .then(film => {
-            console.log(film)
+           
             movie10 = film.title
             if(data.homeworld.includes("https")){
                 fetch(data.homeworld)
@@ -253,6 +254,8 @@ fetch(given)
 })
 .then(data =>{
     console.log("ID"+data.name)
+    console.log("Objekt ID: ") 
+    console.log(data)
     name01 = data.name
     gender01 = data.gender
     skin_color01 = data.skin_color
@@ -276,7 +279,7 @@ fetch(given)
                 })
                 .then(world => {
                     homeworld01 = world.name
-                    console.log(name01)
+                    
                     compareV2()
                 })
             }   
