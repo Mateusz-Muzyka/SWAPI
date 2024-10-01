@@ -161,8 +161,11 @@ function linker(Lookup){
                     console.log("funckaj="+Lookup)
                     
                     NumerID = i
+                    console.log(NumerID)
                     NumerID_z_linkiem = "https://swapi.dev/api/people/" + NumerID
+                    console.log(NumerID_z_linkiem)
                     choices(NumerID_z_linkiem)
+                    compare(NumerID_z_linkiem)
                 }else{
 
                 }
@@ -173,35 +176,36 @@ function linker(Lookup){
       }   
     }
 
-    compare()
+    
 
 }
 
 
-
-function compare(){
-    console.log(NumerID_z_linkiem)
     //Postać dana przez usera {
-    let name10
-    let gender10
-    let skin_color10
-    let homeworld10
-    let mass10
-    let movie10
-    let height10
-    let hair_color10
-// }
+        let name10
+        let gender10
+        let skin_color10
+        let homeworld10
+        let mass10
+        let movie10
+        let height10
+        let hair_color10
+    // }
+    
+        //Postać dana przez system {
+        let name01
+        let gender01
+        let skin_color01
+        let homeworld01
+        let mass01
+        let movie01
+        let height01
+        let hair_color01
+    // }
 
-    //Postać dana przez system {
-    let name01
-    let gender01
-    let skin_color01
-    let homeworld01
-    let mass01
-    let movie01
-    let height01
-    let hair_color01
-// }
+function compare(given){
+    console.log(given)
+
 
 fetch(SWAPI)
 .then(response =>{
@@ -210,43 +214,40 @@ fetch(SWAPI)
 .then(data =>{
     
     name10 = data.name
-    console.log("ID "+data.name)
+    console.log("BASE "+data.name)
     gender10 = data.gender
     skin_color10 = data.skin_color
+    mass10 = data.mass
+    height10 = data.height
+    hair_color10 = data.hair_color
     let aaa = data.films[0]
-    if(aa.includes("https")){
+    if(aaa.includes("https")){
         fetch(aaa)
         .then(response =>{
             return response.json();
         })
-        .then(data => {
-            
-            movie10 = data.title
+        .then(film => {
+            console.log(film)
+            movie10 = film.title
+            if(data.homeworld.includes("https")){
+                fetch(data.homeworld)
+                .then(response =>{
+                    return response.json();
+                })
+                .then(world => {
+                    homeworld10 = world.name
+                })
+            }
         })
     }
 
-    mass10 = data.mass
-
-    if(data.homeworld.includes("https")){
-        fetch(data.homeworld)
-        .then(response =>{
-            return response.json();
-        })
-        .then(data => {
-            homeworld10 = data.name
-        })
-    }
-    
-
-
-    height10 = data.height
-    hair_color10 = data.hair_color
+ 
 
 })
 
 
 
-fetch(NumerID_z_linkiem)
+fetch(given)
 .then(response =>{
     return response.json();
 })
@@ -260,80 +261,78 @@ fetch(NumerID_z_linkiem)
     mass01 = data.mass
 
     let aaa = data.films[0]
-    if(aa.includes("https")){
+    if(aaa.includes("https")){
         fetch(aaa)
         .then(response =>{
             return response.json();
         })
-        .then(data => {
+        .then(film => {
             
-            movie01 = data.title
+            movie01 = film.title
+            if(data.homeworld.includes("https")){
+                fetch(data.homeworld)
+                .then(response =>{
+                    return response.json();
+                })
+                .then(world => {
+                    homeworld01 = world.name
+                    console.log(name01)
+                    compareV2()
+                })
+            }   
         })
     }
-
-    
-
-    if(data.homeworld.includes("https")){
-        fetch(data.homeworld)
-        .then(response =>{
-            return response.json();
-        })
-        .then(data => {
-            homeworld01 = data.name
-        })
-    }   
 })
 
+}
 
-
-/*
-if(name01 == name10){
-    infos[0].style.backgroundColor = "lightgreen";
-}else{
-    infos[0].style.backgroundColor = "lightcoral";
-}
-//
-if(gender01 == gender10){
-    infos[1].style.backgroundColor = "lightgreen";
-}else{
-    infos[1].style.backgroundColor = "lightcoral";
-}
-//
-if(skin_color01 == skin_color10){
-    infos[2].style.backgroundColor = "lightgreen";
-}else{
-    infos[2].style.backgroundColor = "lightcoral";
-}
-//
-if(homeworld01 == homeworld10){
-    infos[3].style.backgroundColor = "lightgreen";
-}else{
-    infos[3].style.backgroundColor = "lightcoral";
-}
-//
-if(mass01 == mass10){
-    infos[4].style.backgroundColor = "lightgreen";
-}else{
-    infos[4].style.backgroundColor = "lightcoral";
-}
-//
-if(movie01 == movie10){
-    infos[5].style.backgroundColor = "lightgreen";
-}else{
-    infos[5].style.backgroundColor = "lightcoral";
-}
-//
-if(height01 == height10){
-    infos[6].style.backgroundColor = "lightgreen";
-}else{
-    infos[6].style.backgroundColor = "lightcoral";
-}
-//
-if(hair_color01 == hair_color10){
-    infos[7].style.backgroundColor = "lightgreen";
-}else{
-    infos[7].style.backgroundColor = "lightcoral";
-}
-//
-*/
+function compareV2(){
+    if(name01 == name10){
+        infos[0].style.backgroundColor = "lightgreen";
+    }else{
+        infos[0].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(gender01 == gender10){
+        infos[1].style.backgroundColor = "lightgreen";
+    }else{
+        infos[1].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(skin_color01 == skin_color10){
+        infos[2].style.backgroundColor = "lightgreen";
+    }else{
+        infos[2].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(homeworld01 == homeworld10){
+        infos[3].style.backgroundColor = "lightgreen";
+    }else{
+        infos[3].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(mass01 == mass10){
+        infos[4].style.backgroundColor = "lightgreen";
+    }else{
+        infos[4].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(movie01 == movie10){
+        infos[5].style.backgroundColor = "lightgreen";
+    }else{
+        infos[5].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(height01 == height10){
+        infos[6].style.backgroundColor = "lightgreen";
+    }else{
+        infos[6].style.backgroundColor = "lightcoral";
+    }
+    //
+    if(hair_color01 == hair_color10){
+        infos[7].style.backgroundColor = "lightgreen";
+    }else{
+        infos[7].style.backgroundColor = "lightcoral";
+    }
+    //
 }
