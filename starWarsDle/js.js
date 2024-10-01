@@ -7,7 +7,7 @@
 
 let SWAPI = "https://swapi.dev/api/people"
 
-
+const reset = document.getElementById("reset")
 const names = document.getElementById("name")
 const gender = document.getElementById("gender")
 const type = document.getElementById("type")
@@ -22,10 +22,18 @@ const ListaDanych = document.getElementById("characters")
 const guess = document.getElementById("guess")
 const guess2 = document.getElementById("guess2")
 guess2.addEventListener("click", GuessCharacter)
+reset.addEventListener("click", rand)
 rand()
 function rand(){
 let Randomizer = Math.floor(Math.random() * 84)
 SWAPI = "https://swapi.dev/api/people/" + Randomizer
+fetch(SWAPI)
+.then(response =>{
+    return response.json();
+})
+.then(data => {
+    ToGuess = data.name;
+})
 }
 
 let SWAPIguesser = "https://swapi.dev/api/people/"
@@ -39,13 +47,7 @@ let NumerID_z_linkiem
 let points = 0
 
 const infos = document.querySelectorAll(".info");
-fetch(SWAPI)
-.then(response =>{
-    return response.json();
-})
-.then(data => {
-    ToGuess = data.name;
-})
+
 
 
 datalisting();
