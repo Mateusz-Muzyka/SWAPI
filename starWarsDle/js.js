@@ -22,8 +22,12 @@ const ListaDanych = document.getElementById("characters")
 const guess = document.getElementById("guess")
 const guess2 = document.getElementById("guess2")
 guess2.addEventListener("click", GuessCharacter)
+rand()
+function rand(){
 let Randomizer = Math.floor(Math.random() * 84)
 SWAPI = "https://swapi.dev/api/people/" + Randomizer
+}
+
 let SWAPIguesser = "https://swapi.dev/api/people/"
 let a
 let ToGuess
@@ -31,6 +35,8 @@ let ToGuessLink = SWAPI
 
 let NumerID
 let NumerID_z_linkiem
+
+let points = 0
 
 const infos = document.querySelectorAll(".info");
 fetch(SWAPI)
@@ -111,10 +117,13 @@ function GuessCharacter(){
     let rep = ToGuess
     if(guess.value == ToGuess || guess.value == rep.split(" ")[0]){
         
+        linker(guess.value)
         for(let i = 0; i<infos.length; i++){
             infos[i].style.backgroundColor = "lightgreen";
     }
-        linker(guess.value)
+        points = 1 + points
+        alert("WYGRAŁEŚ! Masz " + points + " poprawnie odgadniętych postaci")
+        
     } else {
         linker(guess.value)
         for(let i = 0; i<infos.length; i++){
