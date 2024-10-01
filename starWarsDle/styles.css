@@ -4,6 +4,13 @@
 
 }
 
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: url('ikony/walpapa.jpeg'); /* zmień na nazwę swojego pliku */
+    background-size: cover; /* dopasowuje tło do całej strony */
+    background-position: center; /* centrowanie obrazu */
+}
 
 input{
     margin-left: 40%;
@@ -58,7 +65,7 @@ input{
 
 .nigerground{
 background-image: url('walpapa.jpeg'); 
-backgrounds-size: cover;
+background-size: cover;
 }
 /* Dla urządzeń o szerokości maksymalnej 1200px (tablety i małe laptopy) */
 @media (max-width: 1200px) {
